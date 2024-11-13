@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "test4"
+  description: "A cool quarkus app"
+  annotations:
+    argocd/app-name: test4-dev
+    backstage.io/kubernetes-id: test4
+    backstage.io/kubernetes-namespace: test4-dev
+    janus-idp.io/tekton: test4
+    backstage.io/source-location: url:https://github.com/janus-backstage/test4
+    backstage.io/techdocs-ref: url:https://github.com/janus-backstage/test4
+    gitlab.com/project-slug: janus-backstage/test4
+    quay.io/repository-slug: "janus-backstage/test4"
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces/#https://github.com/janus-backstage/test4
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces/#https://github.com/janus-backstage/test4?che-editor=che-incubator/che-idea/latest
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user1"
+  providesApis:
+    - "test4"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "test4"
+  description: "A cool quarkus app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user1"
+  definition:
+    $text: ./openapi.yaml
